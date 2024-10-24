@@ -6,13 +6,15 @@ public class PokemonHolder
 	private String name;
 	private int[] types;
 	private int[] stats;
+	private int expType;
 
-	public PokemonHolder(int id, String name, int[] types, int[] stats)
+	public PokemonHolder(int id, String name, int[] types, int[] stats, int expType)
 	{
 		this.id = id;
 		this.name = name;
 		this.types = types;
 		this.stats = stats;
+		this.expType = expType;
 	}
 
 	// Getters
@@ -35,8 +37,14 @@ public class PokemonHolder
 	{
 		return stats;
 	}
+
 	public int getNumberOfHabilities()
 	{
 		return stats.length;
+	}
+
+	public int getExpType()
+	{
+		return expType;
 	}
 }

@@ -1,14 +1,18 @@
 package pokemons;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
+import expTypes.*;
 import lists.Nature;
 import lists.Pokedex;
 import lists.PokemonDatabase;
 import lists.Stats;
 import objects.Attack;
+import objects.PokemonHolder;
 import objects.PokemonManager;
+import services.CalculateLevel;
 import services.MathS;
 import services.StatsCalculatorInterface;
 
@@ -17,23 +21,26 @@ public class Pokemon
 	StatsCalculatorInterface mathS = new MathS();
 	services.Random random = new services.Random();
 	lists.PokemonDatabase db = new PokemonDatabase();
-	
+
 	// Misc
-	private int id;
+	private final int id;
+	private PokemonHolder pokemon;
 
 	// Pokemon
 	private int pokedexNumber;
-	private String defaultName;
+	private final String defaultName;
 	private String setName;
-	private byte[] types = new byte[2];
+	private final byte[] types = new byte[2];
 	private Nature nature; // Use Nature object instead of just an int
 	private int natureId; // Use Nature object instead of just an int
 	private byte level = 1;
 	private int ability;
+	private int exp = 0;
+	private int expType = 0;
 
 	// Pokemon Stats
 	private Integer[] baseStats = new Integer[6];
-	private Integer[] IV = new Integer[6];
+	private final Integer[] IV = new Integer[6];
 	private Integer[] EV = new Integer[6];
 	private Integer[] stats = new Integer[6];
 	
@@ -44,14 +51,9 @@ public class Pokemon
 	{
 		this.pokedexNumber = pokedexNumber;
 		this.defaultName = Pokedex.pokedex.get(pokedexNumber);
-		
-		setNature();
-		setBaseStats();
-		setIV();
-		setEV();
-		setTypes();
-		setAbility();
-		updateStats();
+
+		setup();
+		update();
 
 		// Look up the pokedexNumber based on the defaultName in the Pokedex map
 		for (Map.Entry<Integer, String> entry : Pokedex.pokedex.entrySet())
@@ -66,6 +68,25 @@ public class Pokemon
 		// Add the new Pokemon to the PokemonManager
 		this.id = PokemonManager.pokemons.size();
 		PokemonManager.pokemons.add(this);
+	}
+
+	private void setup()
+	{
+		pokemon = db.pokemons.get(pokedexNumber-1);
+		setNature();
+		setBaseStats();
+		setIV();
+		setEV();
+		setTypes();
+		setAbility();
+		setExpType();
+		addExp(0);
+	}
+
+	public void update()
+	{
+		updateStats();
+		setLevel((byte)expType);
 	}
 
 	public void setBaseStats ()
@@ -90,6 +111,36 @@ public class Pokemon
 		return this.level;
 	}
 
+	public int getExp()
+	{
+		return this.exp;
+	}
+
+	public void setLevel(byte expType)
+	{
+		switch (expType)
+		{
+			case 1:
+				CalculateLevel erratic = new Erratic();
+				this.level = erratic.calculateLevel(exp);
+			case 2:
+				CalculateLevel fast = new Fast();
+				this.level = fast.calculateLevel(exp);
+			case 3:
+				CalculateLevel fluctuating = new Fluctuating();
+				this.level = fluctuating.calculateLevel(exp);
+			case 4:
+				CalculateLevel medFast = new MediumFast();
+				this.level = medFast.calculateLevel(exp);
+			case 5:
+				CalculateLevel medSlow = new MediumSlow();
+				this.level = medSlow.calculateLevel(exp);
+			case 6:
+				CalculateLevel slow = new Slow();
+				this.level = slow.calculateLevel(exp);
+		}
+	}
+
 	public String getDefaultName ()
 	{
 		return defaultName;
@@ -100,10 +151,24 @@ public class Pokemon
 		return pokemon.id;
 	}
 
+	public void addExp(int exp)
+	{
+		this.exp += exp;
+	}
+
+	public void setExpType()
+	{
+		this.expType = pokemon.getExpType();
+	}
+
+	public int getExpType()
+	{
+		return this.expType;
+	}
+
 	public void setTypes()
 	{
-		int[] typesArray = db.pokemons.get(pokedexNumber-1).getTypes();
-		System.out.println(typesArray[0]);
+		int[] typesArray = pokemon.getTypes();
 		types[0] = (byte) typesArray[0];
 		if(typesArray.length > 1)
 		{
@@ -124,9 +189,9 @@ public class Pokemon
 	public void setAbility()
 	{
 		////Can return hidden ability.
-		byte range = (byte) db.pokemons.get(pokedexNumber-1).getNumberOfHabilities();
+		byte range = (byte) pokemon.getNumberOfHabilities();
 		byte abilityIndex = random.inRange((byte)range);
-		ability = db.pokemons.get(pokedexNumber-1).getStats()[abilityIndex];
+		ability = pokemon.getStats()[abilityIndex];
 	}
 	
 	public int getAbility()
@@ -152,12 +217,15 @@ public class Pokemon
 		return IV;
 	}
 
+	public void addEV(int stat, int ev)
+	{
+		EV[stat] += ev;
+		updateStats();
+	}
+
 	public void setEV ()
 	{
-		for(int i = 0; i < EV.length; i++)
-		{
-			EV[i] = 0;
-		}
+        Arrays.fill(EV, 0);
 	}
 	
 	public Integer[] getEV ()
@@ -167,6 +235,7 @@ public class Pokemon
 
 	public Nature getNature ()
 	{
+		updateStats();
 		return nature;
 	}
 

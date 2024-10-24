@@ -1,6 +1,7 @@
 package services;
 
 import lists.Abilities;
+import lists.EXPTypes;
 import lists.Nature;
 import lists.Types;
 import pokemons.Pokemon;
@@ -16,12 +17,14 @@ public class PrintPokemonImplementation implements PrintInterface
 		int idType1 = pokemon.getType(0);
 		int idType2 = pokemon.getType(1);
 		int ability = pokemon.getAbility();
+		int expType = pokemon.getExpType();
 		
 		String abilityString = Abilities.abilities.get(ability);
 		String name = pokemon.getName();
 		String type1 = Types.types.get(idType1);
 		String type2 = Types.types.get(idType2);
 		String nature = Nature.getNatureName(pokemon.getNatureId());
+		String expTypeString = EXPTypes.EXPTypes.get(expType);
 
 		Integer[] stats = pokemon.getStats();
 		Integer[] baseStats = pokemon.getbaseStats();
@@ -31,7 +34,7 @@ public class PrintPokemonImplementation implements PrintInterface
 		// NAME AND TYPE
 		System.out.println("ID: " + id + ", SID: " + "//TODO");
 
-		System.out.println("Nº: " + pokedexNumber + ", Pokemon: " + name + ", Lvl: " + level);
+		System.out.println("Nº: " + pokedexNumber + ", Pokemon: " + name + ", Lvl: " + level + ", Grow rate type: " + expTypeString);
 		System.out.println("Ability: " + abilityString);
 		System.out.println("Type: " + type1 + ", " + type2 + ".");
 		// NATURE

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Stats
 {
-    public static Map<String, Integer[]> baseStats = new HashMap<>();
+    public final static Map<String, Integer[]> baseStats = new HashMap<>();
 
     static
     {
@@ -21,7 +21,7 @@ public class Stats
         baseStats.put("Blastoise", new Integer[]{79, 83, 100, 85, 105, 78});
         baseStats.put("Caterpie", new Integer[]{45, 30, 35, 20, 20, 45});
         baseStats.put("Metapod", new Integer[]{50, 20, 55, 25, 25, 30});
-        baseStats.put("Butterfree", new Integer[]{60, 45, 40, 90, 80, 70});
+        baseStats.put("Butterfree", new Integer[]{60, 45, 50, 90, 80, 70});
         baseStats.put("Weedle", new Integer[]{40, 35, 30, 20, 20, 50});
         baseStats.put("Kakuna", new Integer[]{45, 25, 50, 25, 25, 35});
         baseStats.put("Beedrill", new Integer[]{65, 90, 40, 45, 80, 75});
@@ -48,23 +48,27 @@ public class Stats
         baseStats.put("Clefable", new Integer[]{95, 70, 73, 95, 90, 60});
         baseStats.put("Vulpix", new Integer[]{38, 41, 40, 50, 65, 65});
         baseStats.put("Ninetales", new Integer[]{73, 76, 75, 81, 100, 100});
-        baseStats.put("Jigglypuff", new Integer[]{115, 45, 50, 40, 20, 20});
+        baseStats.put("Jigglypuff", new Integer[]{115, 45, 20, 45, 25, 20});
         baseStats.put("Wigglytuff", new Integer[]{140, 70, 45, 85, 50, 45});
-        baseStats.put("Zubat", new Integer[]{40, 45, 40, 30, 40, 55});
+        baseStats.put("Zubat", new Integer[]{40, 45, 35, 30, 40, 55});
         baseStats.put("Golbat", new Integer[]{75, 80, 70, 65, 75, 90});
-        baseStats.put("Oddish", new Integer[]{45, 40, 35, 50, 50, 55});
-        baseStats.put("Gloom", new Integer[]{60, 65, 55, 55, 55, 60});
-        baseStats.put("Vileplume", new Integer[]{75, 80, 70, 85, 90, 50});
+        baseStats.put("Oddish", new Integer[]{45, 50, 55, 75, 65, 30});
+        baseStats.put("Gloom", new Integer[]{60, 65, 70, 85, 75, 40});
+        baseStats.put("Vileplume", new Integer[]{75, 80, 85, 110, 90, 50});
         baseStats.put("Paras", new Integer[]{35, 70, 55, 45, 55, 25});
         baseStats.put("Parasect", new Integer[]{60, 95, 80, 60, 80, 30});
         baseStats.put("Venonat", new Integer[]{60, 55, 50, 40, 55, 45});
         baseStats.put("Venomoth", new Integer[]{70, 65, 60, 90, 75, 90});
         baseStats.put("Diglett", new Integer[]{10, 55, 25, 35, 45, 95});
-        baseStats.put("Dugtrio", new Integer[]{35, 80, 50, 50, 70, 120});
-        baseStats.put("Meowth", new Integer[]{40, 45, 40, 40, 40, 90});
+        baseStats.put("Dugtrio", new Integer[]{35, 100, 50, 50, 70, 120});
+        baseStats.put("Meowth", new Integer[]{40, 45, 35, 40, 40, 90});
         baseStats.put("Persian", new Integer[]{65, 70, 60, 65, 65, 115});
         baseStats.put("Psyduck", new Integer[]{50, 52, 48, 65, 50, 55});
         baseStats.put("Golduck", new Integer[]{80, 82, 78, 95, 80, 85});
+        baseStats.put("Mankey", new Integer[]{40, 80, 35, 35, 45, 70});
+        baseStats.put("Primeape", new Integer[]{65, 105, 60, 60, 70, 95});
+        baseStats.put("Growlithe", new Integer[]{55, 70, 45, 70, 50, 60});
+        baseStats.put("Arcanine", new Integer[]{90, 110, 80, 100, 80, 95});
         baseStats.put("Poliwag", new Integer[]{40, 50, 40, 40, 40, 90});
         baseStats.put("Poliwhirl", new Integer[]{65, 65, 65, 50, 50, 90});
         baseStats.put("Poliwrath", new Integer[]{90, 95, 95, 70, 90, 70});
@@ -76,19 +80,19 @@ public class Stats
         baseStats.put("Machamp", new Integer[]{90, 130, 80, 65, 85, 55});
         baseStats.put("Bellsprout", new Integer[]{50, 75, 35, 70, 30, 40});
         baseStats.put("Weepinbell", new Integer[]{65, 90, 50, 85, 45, 55});
-        baseStats.put("Victreebel", new Integer[]{80, 105, 65, 100, 70, 70});
+        baseStats.put("Victreebel", new Integer[]{80, 105, 65, 100, 60, 70});
         baseStats.put("Tentacool", new Integer[]{40, 40, 35, 50, 100, 70});
         baseStats.put("Tentacruel", new Integer[]{80, 70, 65, 80, 120, 100});
         baseStats.put("Geodude", new Integer[]{40, 80, 100, 30, 30, 20});
         baseStats.put("Graveler", new Integer[]{55, 95, 115, 45, 45, 35});
-        baseStats.put("Golem", new Integer[]{80, 110, 130, 55, 65, 45});
-        baseStats.put("Ponyta", new Integer[]{50, 85, 55, 40, 40, 90});
+        baseStats.put("Golem", new Integer[]{80, 120, 130, 55, 65, 45});
+        baseStats.put("Ponyta", new Integer[]{50, 85, 55, 65, 65, 90});
         baseStats.put("Rapidash", new Integer[]{65, 100, 70, 80, 80, 105});
         baseStats.put("Slowpoke", new Integer[]{90, 65, 65, 40, 40, 15});
         baseStats.put("Slowbro", new Integer[]{95, 75, 110, 100, 80, 30});
         baseStats.put("Magnemite", new Integer[]{25, 35, 70, 95, 55, 45});
         baseStats.put("Magneton", new Integer[]{50, 60, 95, 120, 70, 70});
-        baseStats.put("Farfetch'd", new Integer[]{52, 65, 55, 58, 62, 60});
+        baseStats.put("Farfetch'd", new Integer[]{52, 90, 55, 58, 62, 60});
         baseStats.put("Doduo", new Integer[]{35, 85, 45, 35, 35, 75});
         baseStats.put("Dodrio", new Integer[]{60, 110, 70, 60, 60, 110});
         baseStats.put("Seel", new Integer[]{65, 45, 55, 45, 70, 45});
@@ -105,10 +109,10 @@ public class Stats
         baseStats.put("Hypno", new Integer[]{85, 73, 70, 73, 115, 67});
         baseStats.put("Krabby", new Integer[]{30, 105, 90, 25, 25, 50});
         baseStats.put("Kingler", new Integer[]{55, 130, 115, 50, 50, 75});
-        baseStats.put("Voltorb", new Integer[]{40, 30, 30, 55, 55, 100});
-        baseStats.put("Electrode", new Integer[]{60, 50, 40, 80, 80, 140});
+        baseStats.put("Voltorb", new Integer[]{40, 30, 50, 55, 55, 100});
+        baseStats.put("Electrode", new Integer[]{60, 50, 70, 80, 80, 150});
         baseStats.put("Exeggcute", new Integer[]{60, 40, 80, 60, 45, 40});
-        baseStats.put("Exeggutor", new Integer[]{95, 95, 80, 125, 65, 55});
+        baseStats.put("Exeggutor", new Integer[]{95, 95, 85, 125, 75, 55});
         baseStats.put("Cubone", new Integer[]{50, 50, 95, 40, 50, 35});
         baseStats.put("Marowak", new Integer[]{60, 80, 110, 50, 80, 45});
         baseStats.put("Hitmonlee", new Integer[]{50, 120, 53, 35, 110, 87});
@@ -116,23 +120,23 @@ public class Stats
         baseStats.put("Lickitung", new Integer[]{90, 55, 75, 60, 75, 30});
         baseStats.put("Koffing", new Integer[]{40, 65, 95, 60, 45, 35});
         baseStats.put("Weezing", new Integer[]{65, 90, 120, 85, 70, 60});
-        baseStats.put("Rhyhorn", new Integer[]{80, 85, 95, 30, 30, 40});
+        baseStats.put("Rhyhorn", new Integer[]{80, 85, 95, 30, 30, 25});
         baseStats.put("Rhydon", new Integer[]{105, 130, 120, 45, 45, 40});
         baseStats.put("Chansey", new Integer[]{250, 5, 5, 35, 105, 50});
         baseStats.put("Tangela", new Integer[]{65, 55, 115, 100, 40, 60});
         baseStats.put("Kangaskhan", new Integer[]{105, 95, 80, 40, 80, 90});
         baseStats.put("Horsea", new Integer[]{30, 40, 70, 70, 25, 60});
-        baseStats.put("Seadra", new Integer[]{55, 65, 55, 95, 55, 85});
-        baseStats.put("Goldeen", new Integer[]{45, 60, 40, 30, 50, 63});
+        baseStats.put("Seadra", new Integer[]{55, 65, 95, 95, 45, 85});
+        baseStats.put("Goldeen", new Integer[]{45, 67, 60, 35, 50, 63});
         baseStats.put("Seaking", new Integer[]{80, 92, 65, 65, 80, 68});
-        baseStats.put("Staryu", new Integer[]{30, 45, 40, 70, 55, 85});
+        baseStats.put("Staryu", new Integer[]{30, 45, 55, 70, 55, 85});
         baseStats.put("Starmie", new Integer[]{60, 75, 85, 100, 85, 115});
         baseStats.put("Mr. Mime", new Integer[]{40, 45, 65, 100, 120, 90});
         baseStats.put("Scyther", new Integer[]{70, 110, 80, 55, 80, 105});
         baseStats.put("Jynx", new Integer[]{65, 50, 35, 115, 95, 95});
         baseStats.put("Electabuzz", new Integer[]{65, 83, 57, 95, 85, 105});
         baseStats.put("Magmar", new Integer[]{65, 95, 57, 100, 85, 93});
-        baseStats.put("Pinsir", new Integer[]{65, 125, 100, 35, 70, 85});
+        baseStats.put("Pinsir", new Integer[]{65, 125, 100, 55, 70, 85});
         baseStats.put("Tauros", new Integer[]{75, 100, 95, 40, 70, 110});
         baseStats.put("Magikarp", new Integer[]{20, 10, 55, 15, 20, 80});
         baseStats.put("Gyarados", new Integer[]{95, 125, 79, 60, 100, 81});
@@ -145,7 +149,7 @@ public class Stats
         baseStats.put("Porygon", new Integer[]{65, 60, 70, 85, 75, 40});
         baseStats.put("Omanyte", new Integer[]{35, 40, 100, 90, 55, 35});
         baseStats.put("Omastar", new Integer[]{70, 60, 125, 115, 70, 55});
-        baseStats.put("Kabuto", new Integer[]{30, 80, 90, 55, 55, 55});
+        baseStats.put("Kabuto", new Integer[]{30, 80, 90, 55, 45, 55});
         baseStats.put("Kabutops", new Integer[]{60, 115, 105, 65, 70, 80});
         baseStats.put("Aerodactyl", new Integer[]{80, 105, 65, 60, 75, 130});
         baseStats.put("Snorlax", new Integer[]{160, 110, 65, 65, 110, 30});
