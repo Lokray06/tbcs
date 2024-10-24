@@ -10,7 +10,7 @@ public class Main
 	{
 		PrintInterface pokemonPrinter = new PrintPokemonImplementation();
 		
-		Pokemon bulbasaur = new Pokemon(25);
+		Pokemon bulbasaur = new Pokemon(1);
 		
 		pokemonPrinter.print(bulbasaur);
 	}

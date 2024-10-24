@@ -1,10 +1,13 @@
 package pokemons;
 
+import java.util.ArrayList;
 import java.util.Map;
+
 import lists.Nature;
 import lists.Pokedex;
 import lists.PokemonDatabase;
 import lists.Stats;
+import objects.Attack;
 import objects.PokemonManager;
 import services.MathS;
 import services.StatsCalculatorInterface;
@@ -33,6 +36,9 @@ public class Pokemon
 	private Integer[] IV = new Integer[6];
 	private Integer[] EV = new Integer[6];
 	private Integer[] stats = new Integer[6];
+	
+	// Attacks
+	private ArrayList<Attack> attacks = new ArrayList<>();
 
 	public Pokemon(int pokedexNumber)
 	{
@@ -189,9 +195,9 @@ public class Pokemon
 		return stats;
 	}
 
-	public float attack(Attack attack)
-	{
-		float damage = 0;
-		return damage;
-	}
+//	public float attack(Attack attack)
+//	{
+//		float damage = 0;
+//		return damage;
+//	}
 }
