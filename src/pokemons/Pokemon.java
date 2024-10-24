@@ -118,8 +118,8 @@ public class Pokemon
 	public void setAbility()
 	{
 		////Can return hidden ability.
-		//byte range = (byte) db.pokemons.get(pokedexNumber-1).getNumberOfHabilities();
-		byte abilityIndex = random.inRange((byte)2);
+		byte range = (byte) db.pokemons.get(pokedexNumber-1).getNumberOfHabilities();
+		byte abilityIndex = random.inRange((byte)range);
 		ability = db.pokemons.get(pokedexNumber-1).getStats()[abilityIndex];
 	}
 	
@@ -187,5 +187,11 @@ public class Pokemon
 	public Integer[] getStats ()
 	{
 		return stats;
+	}
+
+	public float attack(Attack attack)
+	{
+		float damage = 0;
+		return damage;
 	}
 }
