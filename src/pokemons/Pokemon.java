@@ -123,21 +123,27 @@ public class Pokemon
 			case 1:
 				CalculateLevel erratic = new Erratic();
 				this.level = erratic.calculateLevel(exp);
+				System.out.println("erratic");
 			case 2:
 				CalculateLevel fast = new Fast();
 				this.level = fast.calculateLevel(exp);
+				System.out.println("Fast");
 			case 3:
 				CalculateLevel fluctuating = new Fluctuating();
 				this.level = fluctuating.calculateLevel(exp);
+				System.out.println("Fluctuating");
 			case 4:
 				CalculateLevel medFast = new MediumFast();
 				this.level = medFast.calculateLevel(exp);
+				System.out.println("MedFast");
 			case 5:
 				CalculateLevel medSlow = new MediumSlow();
 				this.level = medSlow.calculateLevel(exp);
+				System.out.println("MedSlow");
 			case 6:
 				CalculateLevel slow = new Slow();
 				this.level = slow.calculateLevel(exp);
+				System.out.println("Slow");
 		}
 	}
 
@@ -154,6 +160,7 @@ public class Pokemon
 	public void addExp(int exp)
 	{
 		this.exp += exp;
+		update();
 	}
 
 	public void setExpType()

@@ -1,26 +1,29 @@
 package expTypes;
 
+import lists.exp.MediumSlowLookUp;
 import services.CalculateLevel;
+
+import org.apache.commons.math3.analysis.solvers.LaguerreSolver;
+import org.apache.commons.math3.complex.Complex;
+
 
 public class MediumSlow implements CalculateLevel
 {
+	@Override
+	public byte calculateLevel(int exp)
+	{
+		MediumSlowLookUp table = new MediumSlowLookUp();
+		return table.getLevelForExperience(exp);
+	}
 
 	@Override
-	public byte calculateLevel (int exp)
+	public int calculateEXP(byte level)
 	{
-		for (byte level = 1; level <= 100; level++)
-		{
-			int expAtLevel = calculateExp(level);
-			if (exp < expAtLevel)
-			{
-				return (byte) (level - 1);
-			}
-		}
-		return 100; // Max level
+		return (int)(1.2*(Math.pow(level,3)) - 15*(Math.pow(level, 2)) + 100*level - 140);
 	}
 
 	private int calculateExp (byte level)
 	{
-		return (int) ((int) ((6 / 5) * Math.pow(level, 3))-(15 * Math.pow(level, 2))+(100 * level)-140);
+		return (int) ((int) (((double) 6 / 5) * Math.pow(level, 3))-(15 * Math.pow(level, 2))+(100 * level)-140);
 	}
 }

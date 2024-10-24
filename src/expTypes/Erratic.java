@@ -19,24 +19,28 @@ public class Erratic implements CalculateLevel
 		return 100; // Max level
 	}
 
+	@Override
+	public int calculateEXP(byte level) {
+		return (level*level) * 100;
+	}
+
 	private int calculateExp (byte level)
 	{
 		if (level < 50)
 		{
-			return (int) (Math.pow(level, 3) * (100 - level) / 50);
+			return (int) ((Math.pow(level, 3) * (100 - level)) / 50);
 		} 
 		else if (level < 68)
 		{
-			return (int) (Math.pow(level, 3) * (150 - level) / 100);
+			return (int) ((Math.pow(level, 3) * (150 - level)) / 100);
 		} 
 		else if (level < 98)
 		{
-			return (int) (Math.pow(level, 3) * ((1911 - 10 * level) / 3.0) / 500);
+			return (int) ((Math.pow(level, 3) * Math.floor((1911-10*level))/3))/500;
 		} 
 		else
 		{
-			return (int) (Math.pow(level, 3) * (160 - level) / 100);
+			return (int) ((Math.pow(level, 3) * (160 - level)) / 100);
 		}
 	}
-
 }

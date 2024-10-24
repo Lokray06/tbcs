@@ -19,6 +19,12 @@ public class MediumFast implements CalculateLevel
 		return 100; // Max level
 	}
 
+	@Override
+	public int calculateEXP(byte level)
+	{
+		return (int)Math.pow(level, 3);
+	}
+
 	private int calculateExp (byte level)
 	{
 		return (int) Math.pow(level, 3);

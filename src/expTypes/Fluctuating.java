@@ -19,6 +19,11 @@ public class Fluctuating implements CalculateLevel
 		return 100; // Max level
 	}
 
+	@Override
+	public int calculateEXP(byte level) {
+		return level * 100 + (level - 1) * (level) * 50;
+	}
+
 	private int calculateExp (byte level)
 	{
 		if (level < 15)
